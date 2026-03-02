@@ -11,7 +11,7 @@ export const PROJECTS_DATA = {
     techStack: ["Node.js 18+", "Gong API", "Intermedia API", "Winston Logger"],
     icon: <Mic className="w-5 h-5 text-blue-500" />,
     metrics: ["Automated user mapping", "99.9% Sync Integrity"],
-    imageURL: "/intermedia-architecture.jpg",
+    imageURL: "/intermedia-sync.jpg",
     fullDetail: {
       problem:
         "Fragmented call data between Intermedia storage and Gong analysis.",

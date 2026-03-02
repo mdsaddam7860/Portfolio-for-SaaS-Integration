@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@mohammadsaddam-dev/hubspot-toolkit": "^2.0.0",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-separator": "^1.1.7",

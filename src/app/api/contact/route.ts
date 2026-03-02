@@ -1,5 +1,16 @@
 export const runtime = 'edge'
 
+// import { createClient } from "@mohammadsaddam-dev/hubspot-toolkit";
+
+// let hubspotClient: any = null;
+// function getClient() {
+//   if (hubspotClient) return hubspotClient;
+//   return (hubspotClient = createClient({
+//     apiKey: process.env.HUBSPOT_API_KEY, // or ACCESS TOKEN
+//     accessToken: process.env.HUBSPOT_ACCESS_TOKEN,
+//   }));
+// }
+
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -55,7 +66,7 @@ export async function POST(req: Request) {
   try {
     const { error } = await resend.emails.send({
       from: `onboarding@resend.dev`,
-      to: ['hasanashab.18205@gmail.com'],
+      to: ['mdsonu2284@gmail.com'],
       replyTo: email,
       subject: sanitizedSubject,
       html: `
@@ -85,3 +96,65 @@ export async function POST(req: Request) {
     })
   }
 }
+
+
+// export const runtime = 'edge'
+
+// import { createClient } from "@mohammadsaddam-dev/hubspot-toolkit";
+// import { Resend } from 'resend'
+
+// const resend = new Resend(process.env.RESEND_API_KEY)
+
+// // Helper to get HubSpot Client
+// function getHubSpotClient() {
+//   return createClient({
+//     accessToken: process.env.HUBSPOT_ACCESS_TOKEN, // Use Access Tokens, not API Keys (deprecated)
+//   });
+// }
+
+
+// export async function POST(req: Request) {
+//   try {
+//     const body = await req.json();
+//     console.log("Incoming Lead Data:", body); // Log 1: Confirming body parsing
+
+//     const { name, email, subject, message } = body;
+
+//     // HUB SPOT SYNC
+//     console.log("Initiating HubSpot Sync...");
+//     try {
+//       const hubspot = getHubSpotClient();
+//       const response = await hubspot.contacts.upsertContactByEmail(email, {
+//         firstname: name.split(' ')[0],
+//         lastname: name.split(' ').slice(1).join(' ') || 'Lead',
+//         message: message,
+//         lead_source: 'Portfolio'
+//       });
+//       console.log("✅ HubSpot Sync Success", response.data);
+//     } catch (hsError: any) {
+//       console.error("❌ HubSpot Sync Failed:", hsError.message);
+//       // We don't return 500 here yet, let's try to at least get the email out.
+//     }
+
+//     // RESEND NOTIFICATION
+//     console.log("Initiating Email Notification...");
+//     const { data, error } = await resend.emails.send({
+//       from: 'onboarding@resend.dev',
+//       to: ['mdsonu2284@gmail.com'], // USE YOUR REGISTERED RESEND EMAIL
+//       subject: `New Lead: ${subject}`,
+//       html: `<p>Name: ${name}</p><p>Message: ${message}</p>`,
+//     });
+
+//     if (error) {
+//       console.error("❌ Resend Failed:", error);
+//       return new Response(JSON.stringify({ error: "Email failed" }), { status: 500 });
+//     }
+
+//     console.log("✅ Email Sent Success");
+//     return new Response(JSON.stringify({ success: true }), { status: 200 });
+
+//   } catch (globalError: any) {
+//     console.error("💥 Global API Crash:", globalError.message);
+//     return new Response(JSON.stringify({ error: globalError.message }), { status: 500 });
+//   }
+// }
