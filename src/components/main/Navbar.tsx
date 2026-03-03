@@ -1,125 +1,3 @@
-// 'use client'
-
-// import {
-//   MobileNav,
-//   MobileNavHeader,
-//   MobileNavMenu,
-//   MobileNavToggle,
-//   NavBody,
-//   NavItems,
-//   NavbarLogo,
-//   Navbar as NavbarWrapper,
-// } from '@/components/ui/resizable-navbar'
-// import { ThemeToggle } from '@/hooks/use-toogle'
-// import Link from 'next/link'
-// import { useEffect, useState } from 'react'
-// import { FaBlog, FaBriefcase, FaCode, FaEnvelope, FaProjectDiagram, FaUser } from 'react-icons/fa'
-// import { Button } from '../ui/button'
-// import { TrackableElement, TrackableContact } from '@/components/analytics/TrackableElement'
-// import { useAnalyticsContext } from '@/components/analytics/AnalyticsProvider'
-
-// export function Navbar() {
-//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-//   const [isScrolled, setIsScrolled] = useState(false)
-//   const { trackClick } = useAnalyticsContext()
-
-//   const navItems = [
-//     { name: 'About', link: '#about', icon: <FaUser /> },
-//     { name: 'Skills', link: '#skills', icon: <FaCode /> },
-//     { name: 'Experience', link: '#experience', icon: <FaBriefcase /> },
-//     { name: 'Projects', link: '#projects', icon: <FaProjectDiagram /> },
-//     { name: 'Blogs', link: '#blogs', icon: <FaBlog /> },
-//   ]
-
-//   useEffect(() => {
-//     const onScroll = () => setIsScrolled(window.scrollY > 50)
-//     window.addEventListener('scroll', onScroll)
-//     return () => window.removeEventListener('scroll', onScroll)
-//   }, [])
-
-//   return (
-//     <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300`}>
-//       <NavbarWrapper className="flex flex-col items-center justify-between gap-4 px-4 py-2">
-//         <NavBody>
-//           <NavbarLogo isScrolled={isScrolled} />
-
-//           <NavItems items={navItems} isScrolled={isScrolled} />
-
-//           <div className="flex items-center gap-2">
-//             <ThemeToggle />
-//             <TrackableContact method="navbar-contact">
-//               <Button
-//                 title="Contact me"
-//                 variant="default"
-//                 className="rounded-full z-50"
-//                 onClick={() => {
-//                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-//                 }}
-//               >
-//                 <FaEnvelope />
-//               </Button>
-//             </TrackableContact>
-//           </div>
-//         </NavBody>
-
-//         <MobileNav>
-//           <MobileNavHeader>
-//             <NavbarLogo isScrolled={isScrolled} />
-//             <MobileNavToggle
-//               isOpen={isMobileMenuOpen}
-//               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-//             />
-//           </MobileNavHeader>
-
-//           <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
-//             {navItems.map((item) => (
-//               <TrackableElement
-//                 key={`mobile-link-${item.name}`}
-//                 elementId={`mobile-nav-${item.name.toLowerCase()}`}
-//                 elementText={`Mobile Nav: ${item.name}`}
-//               >
-//                 <Link
-//                   href={item.link}
-//                   onClick={() => {
-//                     setIsMobileMenuOpen(false)
-//                     document
-//                       .getElementById(item.link.slice(1))
-//                       ?.scrollIntoView({ behavior: 'smooth' })
-//                   }}
-//                   className="relative text-neutral-600 dark:text-neutral-300 flex gap-2 items-center"
-//                 >
-//                   {item.icon} <span>{item.name}</span>
-//                 </Link>
-//               </TrackableElement>
-//             ))}
-//             <div className="flex w-full flex-col gap-4">
-//               <ThemeToggle />
-//               <TrackableContact method="mobile-navbar-contact">
-//                 <Button
-//                   title="Contact me"
-//                   onClick={() => {
-//                     setIsMobileMenuOpen(false)
-//                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-//                   }}
-//                   variant="default"
-//                   className="w-full rounded-full"
-//                 >
-//                   <FaEnvelope />
-//                 </Button>
-//               </TrackableContact>
-//             </div>
-//           </MobileNavMenu>
-//         </MobileNav>
-//       </NavbarWrapper>
-//       <div className="flex items-center justify-center">
-//         {!isScrolled && (
-//           <hr className="h-1/2 w-[90vw] rounded-full border-gray-500 bg-gradient-to-r from-primary-600 to-primary-800 shadow-md" />
-//         )}
-//       </div>
-//     </div>
-//   )
-// }
-
 "use client";
 
 import {
@@ -155,7 +33,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // UPDATED: Nav items to reflect your Integration Architect positioning
+  // RE-INSERTED: This was likely missing or commented out
   const navItems = [
     { name: "About", link: "#about", icon: <FaUserAstronaut /> },
     { name: "Expertise", link: "#skills", icon: <FaCode /> },
@@ -172,17 +50,16 @@ export function Navbar() {
   return (
     <div className="fixed top-0 left-0 w-full z-[100] transition-all duration-500">
       <NavbarWrapper
-        // FIXED: Using backdrop-blur and border-border for theme-adaptive transparency
         className={`flex flex-col items-center justify-between gap-4 px-6 py-3 transition-all ${
           isScrolled
             ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-lg"
             : "bg-transparent"
         }`}
       >
-        <NavBody className="max-w-7xl mx-auto w-full flex items-center justify-between">
+        {/* DESKTOP VIEW: hidden on mobile */}
+        <NavBody className="hidden md:flex max-w-7xl mx-auto w-full items-center justify-between">
           <NavbarLogo isScrolled={isScrolled} />
 
-          {/* Desktop Navigation Items */}
           <NavItems items={navItems} isScrolled={isScrolled} />
 
           <div className="flex items-center gap-4">
@@ -205,7 +82,7 @@ export function Navbar() {
           </div>
         </NavBody>
 
-        {/* Mobile Navigation Logic */}
+        {/* MOBILE VIEW: hidden on desktop */}
         <MobileNav className="w-full md:hidden">
           <MobileNavHeader className="flex items-center justify-between w-full">
             <NavbarLogo isScrolled={isScrolled} />
@@ -253,7 +130,7 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     document
                       .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                      .scrollIntoView({ behavior: "smooth" });
                   }}
                   className="w-full py-6 rounded-2xl bg-blue-600 text-white font-bold text-lg mt-4 shadow-xl"
                 >
@@ -265,7 +142,7 @@ export function Navbar() {
         </MobileNav>
       </NavbarWrapper>
 
-      {/* Decorative Progress/Divider Line */}
+      {/* Decorative Divider */}
       <div className="w-full flex justify-center">
         {!isScrolled && (
           <motion.div
