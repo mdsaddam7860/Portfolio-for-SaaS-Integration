@@ -194,10 +194,10 @@ export interface TimelineItem {
 export const timelineData: TimelineItem[] = [
   {
     id: 1,
-    title: "Senior Integration Engineer",
+    title: "Backend Integration Engineer",
     organization: "Solution For Web",
-    location: "Remote / Delhi NCR",
-    date: "Aug 2025 - Feb 2026",
+    location: "Delhi NCR",
+    date: "Aug 2025 - Mar 2026",
     description:
       "Specialized in architecting fault-tolerant middleware for high-stakes SaaS data synchronization.",
     focusAreas: [
@@ -213,7 +213,7 @@ export const timelineData: TimelineItem[] = [
     title: "Consultant & Backend Architect",
     organization: "Freelance / Contract",
     location: "Remote",
-    date: "Feb 2021 - Mar 2024",
+    date: "Aug 2025 - Feb 2026",
     description:
       "Consulting for startups to bridge the gap between fragmented SaaS tools and centralized data schemas.",
     focusAreas: [

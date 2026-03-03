@@ -13,6 +13,7 @@ import InteractiveWrapper from "@/components/main/InteractiveWrapper";
 import OpenSourceContribution from "@/components/main/OpenSourceContribution";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mohammad-saddam.vercel.app"),
   title:
     "Mohammad Saddam - Integration Architect | HubSpot & CRM Automation Expert",
   description:
@@ -21,38 +22,6 @@ export const metadata: Metadata = {
     canonical: "https://mohammadsaddam.vercel.app",
   },
 };
-
-// export default function Home() {
-//   return (
-//     <div className="min-h-screen min-w-screen">
-//       {/* Hidden SEO content for better indexing */}
-//       <div className="sr-only">
-//         <h1>Hasan Ashab - DevOps Engineer and Cloud Specialist Portfolio</h1>
-//         <p>
-//           Welcome to my professional portfolio. I am a DevOps engineer and cloud
-//           specialist with expertise in AWS, Kubernetes, Docker, CI/CD pipelines,
-//           infrastructure automation, and scalable cloud solutions. Browse my
-//           projects, skills, and professional experience.
-//         </p>
-//       </div>
-
-//       <InteractiveWrapper>
-//         {/* <Hero /> */}
-//         {/* <Skills /> */}
-//         <ResumeSection />
-//         <Timeline />
-//         {/* <CertificationsSection /> */}
-//         <Projects />
-//         <BlogsSection />
-//         <ContactUs />
-//         <Toaster position="bottom-right" />
-//       </InteractiveWrapper>
-
-//       {/* Temporary test components for analytics - remove in production */}
-//       {/* <AnalyticsDebug /> */}
-//     </div>
-//   );
-// }
 
 export default function Home() {
   return (
